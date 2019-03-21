@@ -1,0 +1,40 @@
+<html>
+   <body>
+       <p>Ceng 495 Cloud Computing Homework 1</p>
+       <br>
+      <form action = "/" method = "POST">
+         <p>Enter text for QR Code (*): <input id="text" type = "text" name = "text" /></p>
+         <p>Color of QR Code (*): <select id="comp_select" name="comp_select" class="selectpicker form-control" ></p>
+            <option value="<?php echo $comp_select ?>" selected="selected"> Select Color
+                    <?php echo $comp_select ?>
+                {% for o in data %}
+                <option  value="{{ o.name }}">{{ o.name }}</option>
+                {% endfor %}
+              </select>
+              <br>
+              <br>
+              <p>Color of Background of QR Code (*): <select id="comp_select2" name="comp_select2" class="selectpicker form-control" onclick="$(this).val()"></p>
+                <option value="<?php echo $comp_select2 ?>" selected="selected"> Select Background Color
+                        <?php echo $comp_select ?>    
+                {% for o in data2 %}
+                    <option  value="{{ o.name }}">{{o.name}}</option>
+                    {% endfor %}
+                  </select>
+         <p><input type = "submit" value = "submit" /></p>
+         <br>
+         <br>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?data={{name}}&amp;size=100x100&color={{colorv}}&bgcolor={{colorb}}" alt="" title="" />
+      </form>
+      <br>
+      <form enctype="multipart/form-data" action="http://api.qrserver.com/v1/read-qr-code/" method="POST">
+        <!-- MAX_FILE_SIZE (maximum file size in bytes) must precede the file input field used to upload the QR code image -->
+        <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+        <!-- The "name" of the input field has to be "file" as it is the name of the POST parameter -->
+        Choose QR code image to read/scan
+        <br> <input name="file" type="file" /> <br> <br>
+        <input type="submit" value="Read QR code" />
+        </form>
+        <br>
+        <p>All fields denoted with * must be filled, otherwise you will get an error</p>
+   </body>
+</html>
