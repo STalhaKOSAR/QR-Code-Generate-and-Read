@@ -1,0 +1,125 @@
+<html>
+<style>
+.colorb{
+   height:25px;
+   width:40px;
+}
+#text{
+  width:100px;
+}
+body {
+  width: 100%;
+  height: 2000px;
+  margin: 0;
+  padding: 0;
+}
+
+.border {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: 12px solid #0f0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 100px;
+  box-sizing: border-box;
+}
+</style>
+<script>
+
+function submitQR(){
+  var txt = document.getElementById("text").value;
+  if(txt==""){
+    alert("Enter a Valid Text in QR Code");
+    location.reload();
+  }
+  var c1 = document.getElementById("favcolor1").value;
+  var nc1 = "";
+  for(var i=1;i<7;i=i+2){
+    nc1 += parseInt("0x"+c1[i]+c1[i+1]);
+    if(i<5){
+      nc1+="-";
+    }
+  }
+  var c2 = document.getElementById("favcolor2").value;
+  var nc2 = "";
+  for(var i=1;i<7;i=i+2){
+    nc2 += parseInt("0x"+c2[i]+c2[i+1]);
+     if(i<5){
+      nc2+="-";
+    }
+  }
+  //console.log("txt",txt);
+  //console.log("c1",nc1);
+  //console.log("c2",nc2);
+  document.getElementById("qrDiv").innerHTML="";
+  var desc = document.createElement('p');
+  desc.innerHTML = "This is your QR Code";
+  document.getElementById("qrDiv").appendChild(desc);
+  var formatName="select";
+  for(var i=0;i<6;i++){
+    formatName += i;
+    var x = document.getElementById(formatName).checked;
+    if(x==true){
+     
+      var formatN = document.getElementById(formatName).value;
+       console.log("F:"+formatN);
+    }else{
+      console.log("FALSE");
+    }
+    formatName="select";
+  }
+  var aElem = document.createElement('a');
+  aElem.setAttribute("href","https://api.qrserver.com/v1/create-qr-code/?data="+txt+"&amp;size=100x100&color="+nc1+"&bgcolor="+nc2+"&format="+formatN);
+  aElem.setAttribute("target","_blank");
+  aElem.setAttribute("download","QRCode");
+  var img = document.createElement('img');
+  img.setAttribute("src","https://api.qrserver.com/v1/create-qr-code/?data="+txt+"&amp;size=100x100&color="+nc1+"&bgcolor="+nc2+"&format="+formatN);
+  img.setAttribute("alt","");
+  img.setAttribute("title","");
+  img.setAttribute("heigth","100");
+  img.setAttribute("width","100");
+  aElem.appendChild(img);
+  document.getElementById("qrDiv").appendChild(aElem);
+}
+</script>
+   <body class="border">
+   <div class="css">
+       <h1 align="middle">QR Code Generator and Reader</h1>
+       </div>
+       <br>
+       <div class="css" align="middle">
+         <p>Text of QR Code : <input id="text" type = "text" name = "text" /></p>
+         <p>Color of QR Code : <input type="color" id="favcolor1" value="#000000" class="colorb"></p>
+         <p>Color of Background : <input type="color" id="favcolor2" value="#ffffff" class="colorb"></p>
+         <p>Output Format :<input id="select0" type="radio" name="format" value="png" checked>.png
+         <input id="select1" type="radio" name="format" value="gif">.gif
+         <input id="select2" type="radio" name="format" value="jpeg">.jpeg
+         <input id="select3" type="radio" name="format" value="jpg">.jpg
+         <input id="select4" type="radio" name="format" value="svg">.svg
+         <input id="select5" type="radio" name="format" value="eps">.eps</p>
+         
+         <p><input class="w3-btn" type = "submit" value = "! Generate QR !" onclick="submitQR()" /></p>
+         </div>
+  <div id="qrDiv" align="middle">
+  <p>This is a default generated QR Code</p>
+  <a href="https://api.qrserver.com/v1/create-qr-code/?data=https://inetworkeskisehir.com&amp;size=100x100&margin=0&format=png" target="_blank" download="QRCode">
+    <img  src="https://api.qrserver.com/v1/create-qr-code/?data=https://inetworkeskisehir.com&amp;size=100x100&margin=0&format=png" alt="" title="" /> 
+    </a>
+ </div>
+      <br>
+      <form enctype="multipart/form-data" action="http://api.qrserver.com/v1/read-qr-code/" method="POST">
+        <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+        <div align="middle">
+        Choose QR code image to read/scan
+        <br> <input name="file" type="file" /> <br> <br>
+        <input type="submit" value="! Read QR !" />
+        </div>
+        </form>
+        <br>
+        <footer align="middle">
+    <a href="https://www.linkedin.com/in/STalhaKosar/" title="LinkedIn" class="footer" target="_blank">&copy; Copyright 2019 Sinan Talha KOSAR</a>
+  </footer>	
+   </body>
+</html>
