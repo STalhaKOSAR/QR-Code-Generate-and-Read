@@ -32,4 +32,4 @@ This shows you how to use Azure as PaaS
 ## Usage BaaS - Without Installation
 You can use full features without any error in index.html in Backend_as_a_Service folder. All above project beautified and more functioned in this folder.
 ## License
-Sinan Talha KOŞAR - GitHub.com/STalhaKOSAR
+[Sinan Talha KOSAR ©](https://www.linkedin.com/in/stalhakosar/)
