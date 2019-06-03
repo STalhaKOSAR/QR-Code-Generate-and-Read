@@ -11,13 +11,13 @@ Follow instructions on:
 (to run on local)  
 #In bash  
 ``
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-FLASK_APP=application.py flask run
+python3 -m venv venv  
+source venv/bin/activate  
+pip install -r requirements.txt  
+FLASK_APP=application.py flask run  
 ``
 
-#Or you can follow instructions on:
+#Or you can follow instructions on:  
 ``
 https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-python
 ``
