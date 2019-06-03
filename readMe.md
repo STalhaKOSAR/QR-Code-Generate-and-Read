@@ -11,7 +11,7 @@ Follow instructions on:
 (to run on local)  
 #In bash  
 ``
-python3 -m venv venv <br \>
+python3 -m venv venv <br>
 source venv/bin/activate <br \>
 pip install -r requirements.txt <br \>  
 FLASK_APP=application.py flask run  
