@@ -1,13 +1,15 @@
 # QRCodeGenerateandRead Project
 
-QRCodeGenerateandRead Project is coded with Python3, used Flask framework and Html mark-up language and deployed in Azure.
+QRCodeGenerateandRead Project is coded with Python3, used Flask framework and Html mark-up language and deployed in Azure.  
+``bash
 To access: http://2099190p.azurewebsites.net
+``
 
 ## Installation
 
-Follow instructions on:
-(to run on local)
-#In bash
+Follow instructions on:  
+(to run on local)  
+#In bash  
 ``bash
 python3 -m venv venv
 source venv/bin/activate
